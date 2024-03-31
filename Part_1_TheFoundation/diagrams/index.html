@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hand-Drawn Mermaid Demo</title>
+  <script src='https://unpkg.com/mermaid@10/dist/mermaid.min.js'></script>
+  <script>mermaid.initialize({'themeVariables': { 'fontSize': '23px', 'fontFamily': 'SwankyandMooMoo'}})</script>
+  <style>
+    @font-face {
+        font-family: 'Inconsolata';
+        src: url('Inconsolata-VariableFont_wdth,wght.ttf');
+    }
+
+    .mermaid {
+        font-family: 'Inconsolata', sans-serif;
+        width: 100%;
+    }
+
+  </style>
+
+</head>
+<body>
+    <pre class="mermaid">
+        graph TD
+
+        classDef node stroke-width:2px,fill:#80c1d9,stroke:black, fill-opacity: 0.8, stroke-dasharray: 9, 2
+        classDef edgePath stroke-width:2px,stroke-dasharray: 9, 9
+
+
+        start["Server Setup: Create socket, bind, listen"]:::someclass --> wait["while True: <br> server_socket.accept()"]
+        classDef someclass fill:#f96
+
+        wait --> connection{"Client Connects <br> Creates client_socket"}
+
+        connection --> receive["Receive data <br> client_socket.recv()"]
+
+        receive --> echo["Echo data <br> client_socket.sendall()"]
+
+        echo --> close["Close connection <br> client_socket.close()"]
+
+        close --> wait
+    </pre>
+</body>
